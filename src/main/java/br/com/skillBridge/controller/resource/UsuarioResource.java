@@ -2,10 +2,8 @@ package br.com.skillBridge.controller.resource;
 
 import br.com.skillBridge.model.bo.UsuarioBO;
 import br.com.skillBridge.model.dto.UsuarioTO;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.validation.Valid;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -39,9 +37,43 @@ public class UsuarioResource {
         Response.ResponseBuilder response;
 
         if (resultado != null) {
-            response = Response.ok();           // 200 (OK)
+            response = Response.ok();
         } else {
-            response = Response.status(404);    // 404 (NOT FOUND)
+            response = Response.status(404);
+        }
+
+        response.entity(resultado);
+        return response.build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response save(@Valid UsuarioTO usuario) {
+        UsuarioTO resultado = usuarioBO.save(usuario);
+        Response.ResponseBuilder response;
+
+        if (resultado != null) {
+            response = Response.created(null);
+        } else {
+            response = Response.status(400);
+        }
+
+        response.entity(resultado);
+        return response.build();
+    }
+
+    @PUT
+    @Path("/{codigo}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response update(@Valid UsuarioTO usuario, @PathParam("codigo") Long codigo) {
+        usuario.setCodigo(codigo);
+        UsuarioTO resultado = usuarioBO.update(usuario);
+        Response.ResponseBuilder response;
+
+        if (resultado != null) {
+            response = Response.created(null);  // 201 (CREATED)
+        } else {
+            response = Response.status(400);            // 400 (BAD REQUEST)
         }
 
         response.entity(resultado);

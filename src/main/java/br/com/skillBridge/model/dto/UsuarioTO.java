@@ -1,14 +1,23 @@
 package br.com.skillBridge.model.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Positive;
+
 import java.time.LocalDate;
 
 public class UsuarioTO {
     private Long codigo;
+    @NotBlank
     private String nome;
+    @NotBlank
     private String email;
+    @NotBlank
     private String senha;
     private String sexo;
+    @Past
     private LocalDate dataNascimento;
+    @Positive
     private Long cpf;
 
     public UsuarioTO() {}
