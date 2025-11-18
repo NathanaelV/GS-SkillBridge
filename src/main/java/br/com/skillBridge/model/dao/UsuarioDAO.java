@@ -28,8 +28,6 @@ public class UsuarioDAO {
                     usuario.setCpf(rs.getLong("nr_cpf"));
                     usuarios.add(usuario);
                 }
-
-                System.out.println("\nFim do While\n");
             } else {
                 return null;
             }
@@ -88,8 +86,6 @@ public class UsuarioDAO {
                         usuario.setCodigo(rs.getLong(1));
                     }
                 }
-
-                System.out.println("\nAqui o usuário retorna\n");
 
                 return usuario;
             } else {
