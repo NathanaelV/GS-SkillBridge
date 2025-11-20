@@ -19,7 +19,7 @@ public class EmpresaDAO {
             if (rs != null) {
                 while (rs.next()) {
                     EmpresaTO empresa = new EmpresaTO();
-                    empresa.setCodigo(rs.getLong("id_empresa"));
+                    empresa.setId(rs.getLong("id_empresa"));
                     empresa.setNome(rs.getString("nm_empresa"));
                     empresa.setEmail(rs.getString("nm_email"));
                     empresa.setSetor(rs.getString("nm_setor"));

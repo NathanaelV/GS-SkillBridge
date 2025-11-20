@@ -2,13 +2,6 @@ package br.com.skillBridge.model.bo;
 
 import br.com.skillBridge.model.dao.UsuarioDAO;
 import br.com.skillBridge.model.dto.UsuarioTO;
-import jakarta.validation.Valid;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.PUT;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 

@@ -1,24 +1,24 @@
 package br.com.skillBridge.model.dto;
 
 public class HabilidadeTO {
-    private Long codigo;
+    private long id;
     private String nome;
     private String categoria;
 
     public HabilidadeTO() {}
 
-    public HabilidadeTO(Long codigo, String nome, String categoria) {
-        this.codigo = codigo;
+    public HabilidadeTO(long id, String nome, String categoria) {
+        this.id = id;
         this.nome = nome;
         this.categoria = categoria;
     }
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getId() {
+        return id;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

@@ -1,26 +1,26 @@
 package br.com.skillBridge.model.dto;
 
 public class EmpresaTO {
-    private Long codigo;
+    private Long id;
     private String nome;
     private String email;
     private String setor;
 
     public EmpresaTO() {}
 
-    public EmpresaTO(Long codigo, String nome, String email, String setor) {
-        this.codigo = codigo;
+    public EmpresaTO(Long id, String nome, String email, String setor) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.setor = setor;
     }
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getId() {
+        return id;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

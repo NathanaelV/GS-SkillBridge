@@ -66,7 +66,7 @@ public class UsuarioResource {
     @Path("/{codigo}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(@Valid UsuarioTO usuario, @PathParam("codigo") Long codigo) {
-        usuario.setCodigo(codigo);
+        usuario.setId(codigo);
         UsuarioTO resultado = usuarioBO.update(usuario);
         Response.ResponseBuilder response;
 

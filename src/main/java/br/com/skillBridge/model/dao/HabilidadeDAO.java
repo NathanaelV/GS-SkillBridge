@@ -19,7 +19,7 @@ public class HabilidadeDAO {
             if (rs != null) {
                 while (rs.next()) {
                     HabilidadeTO habilidade = new HabilidadeTO();
-                    habilidade.setCodigo(rs.getLong("id_habilidade"));
+                    habilidade.setId(rs.getLong("id_habilidade"));
                     habilidade.setNome(rs.getString("nm_habilidade"));
                     habilidade.setCategoria(rs.getString("nm_categoria"));
                     habilidades.add(habilidade);
@@ -36,5 +36,4 @@ public class HabilidadeDAO {
 
         return habilidades;
     }
-    
 }
