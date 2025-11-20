@@ -1,6 +1,8 @@
 package br.com.skillBridge.controller.resource;
 
+import br.com.skillBridge.model.bo.TrilhaUsuarioBO;
 import br.com.skillBridge.model.bo.UsuarioBO;
+import br.com.skillBridge.model.dto.TrilhaUsuarioTO;
 import br.com.skillBridge.model.dto.UsuarioTO;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -74,6 +76,25 @@ public class UsuarioResource {
             response = Response.created(null);  // 201 (CREATED)
         } else {
             response = Response.status(400);            // 400 (BAD REQUEST)
+        }
+
+        response.entity(resultado);
+        return response.build();
+    }
+
+    // usuario/:id/trilhas
+    @GET
+    @Path("/{codigo}/trilha_usuario")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findTrilhaByUsuario(@PathParam("codigo") Long codigo) {
+        TrilhaUsuarioBO trilhaUsuarioBO = new TrilhaUsuarioBO();
+        ArrayList<TrilhaUsuarioTO> resultado = trilhaUsuarioBO.findAll(codigo);
+        Response.ResponseBuilder response;
+
+        if (resultado != null) {
+            response = Response.ok();
+        } else {
+            response = Response.status(404);
         }
 
         response.entity(resultado);
