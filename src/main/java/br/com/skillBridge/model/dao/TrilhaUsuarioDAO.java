@@ -6,12 +6,12 @@ import br.com.skillBridge.model.dto.TrilhaUsuarioTO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class TrilhaUsuarioDAO {
     public ArrayList<TrilhaUsuarioTO> findAll(Long idUsuario) {
         ArrayList<TrilhaUsuarioTO> trilhaUsuarios = new ArrayList<>();
-        TrilhaTO trilha = new TrilhaTO();
 
         String sql = "select * from t_skb_trilha_usuario tu inner join t_skb_trilha t " +
                 "on (tu.id_trilha = t.id_trilha) where id_usuario=?";
@@ -23,6 +23,7 @@ public class TrilhaUsuarioDAO {
             if (rs != null) {
                 while (rs.next()) {
                     TrilhaUsuarioTO trilhaUsuario = new TrilhaUsuarioTO();
+                    TrilhaTO trilha = new TrilhaTO();
                     trilhaUsuario.setId(rs.getLong("id_trilha_usuario"));
                     trilhaUsuario.setProgresso(rs.getInt("nv_progresso"));
                     trilhaUsuario.setStatus(rs.getString("st_status"));

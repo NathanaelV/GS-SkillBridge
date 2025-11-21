@@ -46,4 +46,14 @@ public class TrilhaTO {
     public void setAreaProfissional(String areaProfissional) {
         this.areaProfissional = areaProfissional;
     }
+
+    @Override
+    public String toString() {
+        return "TrilhaTO{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", areaProfissional='" + areaProfissional + '\'' +
+                '}';
+    }
 }
