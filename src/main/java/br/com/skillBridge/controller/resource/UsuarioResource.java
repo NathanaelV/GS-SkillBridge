@@ -1,7 +1,9 @@
 package br.com.skillBridge.controller.resource;
 
+import br.com.skillBridge.model.bo.HabilidadeUsuarioBO;
 import br.com.skillBridge.model.bo.TrilhaUsuarioBO;
 import br.com.skillBridge.model.bo.UsuarioBO;
+import br.com.skillBridge.model.dto.HabilidadeUsuarioTO;
 import br.com.skillBridge.model.dto.TrilhaUsuarioTO;
 import br.com.skillBridge.model.dto.UsuarioTO;
 import jakarta.validation.Valid;
@@ -85,7 +87,7 @@ public class UsuarioResource {
     @GET
     @Path("/{codigo}/trilha_usuario")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@PathParam("codigo") Long codigo) {
+    public Response findAllTrilha(@PathParam("codigo") Long codigo) {
         TrilhaUsuarioBO trilhaUsuarioBO = new TrilhaUsuarioBO();
         ArrayList<TrilhaUsuarioTO> resultado = trilhaUsuarioBO.findAll(codigo);
         Response.ResponseBuilder response;
@@ -100,4 +102,21 @@ public class UsuarioResource {
         return response.build();
     }
 
+    @GET
+    @Path("{codigo}/habilidade_usuario")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findAllHabilidade(@PathParam("codigo") Long codigo) {
+        HabilidadeUsuarioBO habilidadeUsuarioBO = new HabilidadeUsuarioBO();
+        ArrayList<HabilidadeUsuarioTO> resultado = habilidadeUsuarioBO.findAll(codigo);
+        Response.ResponseBuilder response;
+
+        if (resultado != null) {
+            response = Response.ok();
+        } else {
+            response = Response.status(404);
+        }
+
+        response.entity(resultado);
+        return response.build();
+    }
 }
