@@ -86,7 +86,7 @@ public class UsuarioResource {
     @GET
     @Path("/{codigo}/trilha_usuario")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findTrilhaByUsuario(@PathParam("codigo") Long codigo) {
+    public Response findAll(@PathParam("codigo") Long codigo) {
         TrilhaUsuarioBO trilhaUsuarioBO = new TrilhaUsuarioBO();
         ArrayList<TrilhaUsuarioTO> resultado = trilhaUsuarioBO.findAll(codigo);
         Response.ResponseBuilder response;

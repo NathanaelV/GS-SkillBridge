@@ -6,18 +6,16 @@ public class TrilhaUsuarioTO {
     private Long id;
     private int progresso;
     private String status;
-    private Long idUsuario;
-    private Long idTrilha;
+    private TrilhaTO trilha;
     private LocalDate dataCriacao;
 
     public TrilhaUsuarioTO() {}
 
-    public TrilhaUsuarioTO(Long id, int progresso, String status, Long idUsuario, Long idTrilha, LocalDate dataCriacao) {
+    public TrilhaUsuarioTO(Long id, int progresso, String status, TrilhaTO trilha, LocalDate dataCriacao) {
         this.id = id;
         this.progresso = progresso;
         this.status = status;
-        this.idUsuario = idUsuario;
-        this.idTrilha = idTrilha;
+        this.trilha = trilha;
         this.dataCriacao = dataCriacao;
     }
 
@@ -45,27 +43,19 @@ public class TrilhaUsuarioTO {
         this.status = status;
     }
 
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public Long getIdTrilha() {
-        return idTrilha;
-    }
-
-    public void setIdTrilha(Long idTrilha) {
-        this.idTrilha = idTrilha;
-    }
-
     public LocalDate getDataCriacao() {
         return dataCriacao;
     }
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public TrilhaTO getTrilha() {
+        return trilha;
+    }
+
+    public void setTrilha(TrilhaTO trilha) {
+        this.trilha = trilha;
     }
 }

@@ -1,6 +1,9 @@
 package br.com.skillBridge.controller.resource;
 
 import br.com.skillBridge.model.bo.TrilhaBO;
+import br.com.skillBridge.model.bo.TrilhaCursoBO;
+import br.com.skillBridge.model.dto.CursoTO;
+import br.com.skillBridge.model.dto.TrilhaCursoTO;
 import br.com.skillBridge.model.dto.TrilhaTO;
 import br.com.skillBridge.model.dto.TrilhaTO;
 import jakarta.ws.rs.GET;
@@ -48,5 +51,22 @@ public class TrilhaResource {
         response.entity(resultado);
         return response.build();
     }
-    
+
+    @GET
+    @Path("/{codigo}/curso")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findAll(@PathParam("codigo") Long codigo) {
+        TrilhaCursoBO trilhaCursoBO = new TrilhaCursoBO();
+        ArrayList<CursoTO> resultado = trilhaCursoBO.findAll(codigo);
+        Response.ResponseBuilder response;
+
+        if (resultado != null) {
+            response = Response.ok();
+        } else {
+            response = Response.status(404);
+        }
+
+        response.entity(resultado);
+        return response.build();
+    }
 }

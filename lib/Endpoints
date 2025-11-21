@@ -1,0 +1,341 @@
+
+// USUARIO
+
+// Retornar todos os usuários
+
+// GET: http://localhost:8080/usuario
+
+// Retorna:
+
+[
+	{
+		"codigo": 1,
+		"nome": "Leonardo Hamato",
+		"email": "leonardo@turtles.com",
+		"senha": null,
+		"sexo": "M",
+		"dataNascimento": "1995-03-22",
+		"cpf": 12345678901
+	},
+	{
+		"codigo": 2,
+		"nome": "Son Goku",
+		"email": "goku@dragonball.com.br",
+		"senha": null,
+		"sexo": "M",
+		"dataNascimento": "1984-04-18",
+		"cpf": 98765432109
+	}
+]
+
+
+------------------------------------------------------------
+
+// Criar um usuário específico
+
+// POST: http://localhost:8080/usuario
+
+// BODY
+
+{
+	"nome": "Leonardo Hamato 01",
+	"email": "leonardo@turtles.com",
+	"senha": "senha_muito_difícil",
+	"sexo": "M",
+	"dataNascimento": "1995-03-22",
+	"cpf": 5234567507,
+	"idEmpresa": 2,
+	"habilidadesUsuario": [
+		{
+			"nivel": "iniciante",
+			"idHabilidade": 3
+		},
+		{
+			"nivel": "intermediario",
+			"idHabilidade": 2
+		}
+	]
+}
+
+// Retorna
+
+{
+	"id": 17,
+	"nome": "Leonardo Hamato 01",
+	"email": "leonardo@turtles.com",
+	"senha": "senha_muito_difícil",
+	"sexo": "M",
+	"dataNascimento": "1995-03-22",
+	"cpf": 5234567507,
+	"idEmpresa": 2,
+	"habilidadesUsuario": [
+		{
+			"id": 33,
+			"nivel": "iniciante",
+			"dataCriacao": "2025-11-20",
+			"idUsuario": 17,
+			"idHabilidade": 3
+		},
+		{
+			"id": 34,
+			"nivel": "intermediario",
+			"dataCriacao": "2025-11-20",
+			"idUsuario": 17,
+			"idHabilidade": 2
+		}
+	]
+}
+
+
+------------------------------------------------------------
+
+// Retornar as informações de um usuário específico
+
+// GET: http://localhost:8080/usuario/:id
+
+// Retorna
+
+{
+	"codigo": 22,
+	"nome": "Leonardo Hamato 05",
+	"email": "leonardo@turtles.com",
+	"senha": null,
+	"sexo": "M",
+	"dataNascimento": "1995-03-22",
+	"cpf": 5234567535
+}
+
+
+------------------------------------------------------------
+
+// Atualizar as informações de um usuário
+
+// PUT: http://localhost:8080/usuario/22
+
+// Body
+
+{
+	"nome": "Leonardo Hamato 05",
+	"email": "leonardo@turtles.com",
+	"senha": "senha_muito_difícil",
+	"sexo": "M",
+	"dataNascimento": "1995-03-22",
+	"cpf": 5234567535
+}
+
+// Retorna
+
+{
+	"codigo": 22,
+	"nome": "Leonardo Hamato 05",
+	"email": "leonardo@turtles.com",
+	"senha": "senha_muito_difícil",
+	"sexo": "M",
+	"dataNascimento": "1995-03-22",
+	"cpf": 5234567535
+}
+
+
+
+
+========================================================================================================================
+
+
+// EMPRESA
+
+// Listar todas as empresas
+
+// GET: http://localhost:8080/empresa
+
+// Retorna
+
+[
+	{
+		"id": 1,
+		"nome": "Academia Ninja da Folha",
+		"email": "contato@konoha.com.br",
+		"setor": "Educação e Treinamento"
+	},
+	{
+		"id": 2,
+		"nome": "Corporação Cápsula Brasil",
+		"email": "rh@capsulecorp.com.br",
+		"setor": "Tecnologia e Engenharia"
+	}
+]
+
+
+------------------------------------------------------------
+
+// Encontrar uma Empresa específica
+
+// GET: http://localhost:8080/empresa/:id
+
+// Retorna
+
+{
+	"id": 6,
+	"nome": "Namekusei Consultoria",
+	"email": "aliens@namek.com.br",
+	"setor": "Consultoria Estratégica"
+}
+
+
+
+========================================================================================================================
+
+
+// HABILIDADE
+
+// Listar todas as habilidades no Banco de Dados
+
+// GET: http://localhost:8080/habilidade
+
+// Retorna
+
+[
+	{
+		"codigo": 1,
+		"nome": "Genjutsu: Ilusão e Dissipação",
+		"categoria": "Técnica Ninja"
+	},
+	{
+		"codigo": 2,
+		"nome": "Fusão Potara",
+		"categoria": "Técnica de Combate Avançada"
+	}
+]
+
+
+
+========================================================================================================================
+
+
+// TRILHA
+
+// Mostrar todas as listas do Banco de Dados
+
+// GET: http://localhost:8080/trilha
+
+// Retorna
+
+[
+	{
+		"id": 1,
+		"nome": "Especialista em Defesa Bijuu",
+		"descricao": "Treinamento avançado para Jinchuurikis e mestres do chakra de caudas.",
+		"areaProfissional": "Gestão de Poder"
+	},
+	{
+		"id": 2,
+		"nome": "Desenvolvedor de Inovações C.C.",
+		"descricao": "Foco em prototipagem e testes de tecnologia de compactação e novos equipamentos.",
+		"areaProfissional": "Pesquisa e Desenvolvimento"
+	}
+]
+
+
+------------------------------------------------------------
+
+// Mostrar uma Trilha específica
+
+// GET: http://localhost:8080/trilha/:id
+
+// Retorna
+
+{
+	"id": 5,
+	"nome": "Estratégia de Infiltração Urbana",
+	"descricao": "Táticas de vigilância, coleta de dados e combate em ambiente metropolitano (Nova Iorque).",
+	"areaProfissional": "Inteligência e Segurança"
+}
+
+
+
+========================================================================================================================
+
+
+// CURSO
+
+// Mostra um Curso específico
+
+// GET: http://localhost:8080/curso/:id
+
+// Retorna
+
+{
+	"id": 5,
+	"nome": "Introdução à Manipulação de Ki",
+	"nivel": "Básico",
+	"conteudoPrincipal": "Sentindo e controlando o fluxo de energia interna e técnicas de defesa básica.",
+	"dataCriacao": "2023-08-01"
+}
+
+
+
+========================================================================================================================
+
+
+// TRILHA USUARIO
+
+// Retorna as trilhas de um usuário específico
+
+// GET: http://localhost:8080/usuario/8/trilha_usuario
+
+// Retorna
+
+[
+	{
+		"id": 16,
+		"progresso": 100,
+		"status": "Concluído",
+		"trilha": {
+			"id": 7,
+			"nome": "Ninjutsu Elemental Avançado",
+			"descricao": "Domínio de 5 transformações de natureza (Katon, Suiton, etc.) e combinação de elementos.",
+			"areaProfissional": "Magia e Elementos"
+		},
+		"dataCriacao": "2024-01-25"
+	},
+	{
+		"id": 17,
+		"progresso": 10,
+		"status": "Não Iniciado",
+		"trilha": {
+			"id": 7,
+			"nome": "Ninjutsu Elemental Avançado",
+			"descricao": "Domínio de 5 transformações de natureza (Katon, Suiton, etc.) e combinação de elementos.",
+			"areaProfissional": "Magia e Elementos"
+		},
+		"dataCriacao": "2024-04-01"
+	}
+]
+
+
+========================================================================================================================
+
+
+// TRILHA CURSO
+
+// Retorna todos os cursos de uma determinada Trilha
+
+// GET: http://localhost:8080/trilha/5/curso
+
+// Retorna
+
+[
+	{
+		"id": 8,
+		"nome": "Liderança e Código Samurai",
+		"nivel": "Avançado",
+		"conteudoPrincipal": null,
+		"dataCriacao": "2023-05-15"
+	},
+	{
+		"id": 4,
+		"nome": "Robótica e Drones Kraang",
+		"nivel": "Intermediário",
+		"conteudoPrincipal": null,
+		"dataCriacao": "2023-09-20"
+	}
+]
