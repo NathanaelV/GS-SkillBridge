@@ -12,4 +12,9 @@ public class TrilhaUsuarioBO {
         trilhaUsuarioDAO = new TrilhaUsuarioDAO();
         return trilhaUsuarioDAO.findAll(idUsuario);
     }
+
+    public TrilhaUsuarioTO save(Long idUsuario, TrilhaUsuarioTO trilhaUsuarioTO) {
+        trilhaUsuarioDAO = new TrilhaUsuarioDAO();
+        return trilhaUsuarioDAO.save(idUsuario, trilhaUsuarioTO);
+    }
 }

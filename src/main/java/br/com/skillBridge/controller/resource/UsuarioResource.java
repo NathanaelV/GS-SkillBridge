@@ -119,4 +119,22 @@ public class UsuarioResource {
         response.entity(resultado);
         return response.build();
     }
+
+    @POST
+    @Path("{codigo}/trilha_usuario")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response save(@PathParam("codigo") Long codigo, TrilhaUsuarioTO trilhaUsuarioTO) {
+        TrilhaUsuarioBO trilhaUsuarioBO = new TrilhaUsuarioBO();
+        TrilhaUsuarioTO resultado = trilhaUsuarioBO.save(codigo, trilhaUsuarioTO);
+        Response.ResponseBuilder response;
+
+        if (resultado != null) {
+            response = Response.ok();
+        } else {
+            response = Response.status(404);
+        }
+
+        response.entity(resultado);
+        return response.build();
+    }
 }

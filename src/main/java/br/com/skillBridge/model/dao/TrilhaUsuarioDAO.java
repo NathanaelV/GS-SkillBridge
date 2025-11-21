@@ -2,6 +2,7 @@ package br.com.skillBridge.model.dao;
 
 import br.com.skillBridge.model.dto.TrilhaTO;
 import br.com.skillBridge.model.dto.TrilhaUsuarioTO;
+import oracle.jdbc.proxy.annotation.Pre;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,5 +46,32 @@ public class TrilhaUsuarioDAO {
         return trilhaUsuarios;
     }
 
+    public TrilhaUsuarioTO save(Long idUsuario, TrilhaUsuarioTO trilhaUsuarioTO) {
+        String sql = "insert into t_skb_trilha_usuario (nv_progresso, st_status, id_usuario, id_trilha, dt_criacao) " +
+                "values (0, 'Iniciado', ?, ?, sysdate)";
+        String[] colunasRetorno = {"id_trilha_usuario", "dt_criacao"};
 
+        try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql, colunasRetorno)) {
+            ps.setLong(1, idUsuario);
+            ps.setLong(2, trilhaUsuarioTO.getTrilha().getId());
+
+            if (ps.executeUpdate() > 0) {
+                try (ResultSet rs = ps.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        trilhaUsuarioTO.setId(rs.getLong(1));
+                        trilhaUsuarioTO.setDataCriacao(rs.getDate(2).toLocalDate());
+                        trilhaUsuarioTO.setProgresso(0);
+                        trilhaUsuarioTO.setStatus("Iniciado");
+                    }
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro na criação: " + e.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection();
+        }
+
+        return trilhaUsuarioTO;
+    }
 }
