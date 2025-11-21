@@ -6,17 +6,15 @@ public class HabilidadeUsuarioTO {
     private Long id;
     private String nivel;
     private LocalDate dataCriacao;
-    private Long idUsuario;
-    private Long idHabilidade;
+    private HabilidadeTO habilidade;
 
     public HabilidadeUsuarioTO() {}
 
-    public HabilidadeUsuarioTO(Long id, String nivel, LocalDate dataCriacao, Long idUsuario, Long idHabilidade) {
+    public HabilidadeUsuarioTO(Long id, String nivel, LocalDate dataCriacao, HabilidadeTO habilidade) {
         this.id = id;
         this.nivel = nivel;
         this.dataCriacao = dataCriacao;
-        this.idUsuario = idUsuario;
-        this.idHabilidade = idHabilidade;
+        this.habilidade = habilidade;
     }
 
     public Long getId() {
@@ -43,19 +41,11 @@ public class HabilidadeUsuarioTO {
         this.dataCriacao = dataCriacao;
     }
 
-    public Long getIdUsuario() {
-        return idUsuario;
+    public HabilidadeTO getHabilidade() {
+        return habilidade;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public Long getIdHabilidade() {
-        return idHabilidade;
-    }
-
-    public void setIdHabilidade(Long idHabilidade) {
-        this.idHabilidade = idHabilidade;
+    public void setHabilidade(HabilidadeTO habilidade) {
+        this.habilidade = habilidade;
     }
 }

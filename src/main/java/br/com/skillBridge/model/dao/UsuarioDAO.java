@@ -88,7 +88,7 @@ public class UsuarioDAO {
             if (ps.executeUpdate() > 0) {
                 try (ResultSet rs = ps.getGeneratedKeys()) {
                     if (rs.next()) {
-                        Long codigoUsuario = rs.getLong(1);
+                        long codigoUsuario = rs.getLong(1);
                         usuario.setId(codigoUsuario);
 
                         String sqlHabilidadeUsuario = "insert into T_SKB_USUARIO_HABILIDADE (nv_conhecimento, id_usuario, id_habilidade, dt_criacao)" +
@@ -96,12 +96,11 @@ public class UsuarioDAO {
                         String[] colunasRetorno = {"id_usuario_habilidade", "dt_criacao"};
 
                         for (HabilidadeUsuarioTO habilidadeUsuario : usuario.getHabilidadesUsuario()) {
-                            habilidadeUsuario.setIdUsuario(codigoUsuario);
 
                             try (PreparedStatement ps2 = ConnectionFactory.getConnection().prepareStatement(sqlHabilidadeUsuario, colunasRetorno)) {
                                 ps2.setString(1, habilidadeUsuario.getNivel());
-                                ps2.setLong(2, habilidadeUsuario.getIdUsuario());
-                                ps2.setLong(3, habilidadeUsuario.getIdHabilidade());
+                                ps2.setLong(2, codigoUsuario);
+                                ps2.setLong(3, habilidadeUsuario.getHabilidade().getId());
 
                                 if (ps2.executeUpdate() <= 0){
                                     return null;

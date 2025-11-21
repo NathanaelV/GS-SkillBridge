@@ -73,16 +73,15 @@ public class UsuarioResource {
         Response.ResponseBuilder response;
 
         if (resultado != null) {
-            response = Response.created(null);  // 201 (CREATED)
+            response = Response.created(null);
         } else {
-            response = Response.status(400);            // 400 (BAD REQUEST)
+            response = Response.status(400);
         }
 
         response.entity(resultado);
         return response.build();
     }
 
-    // usuario/:id/trilhas
     @GET
     @Path("/{codigo}/trilha_usuario")
     @Produces(MediaType.APPLICATION_JSON)
