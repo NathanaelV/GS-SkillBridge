@@ -108,17 +108,4 @@ public class UsuarioTO {
     public void setHabilidadesUsuario(ArrayList<HabilidadeUsuarioTO> habilidadesUsuario) {
         this.habilidadesUsuario = habilidadesUsuario;
     }
-
-    @Override
-    public String toString() {
-        return "UsuarioTO{" +
-                "codigo=" + id +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", senha='" + senha + '\'' +
-                ", sexo='" + sexo + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", cpf=" + cpf +
-                '}';
-    }
 }

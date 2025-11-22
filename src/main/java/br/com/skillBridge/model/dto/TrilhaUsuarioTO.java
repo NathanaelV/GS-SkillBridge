@@ -58,15 +58,4 @@ public class TrilhaUsuarioTO {
     public void setTrilha(TrilhaTO trilha) {
         this.trilha = trilha;
     }
-
-    @Override
-    public String toString() {
-        return "TrilhaUsuarioTO{" +
-                "id=" + id +
-                ", progresso=" + progresso +
-                ", status='" + status + '\'' +
-                ", trilha=" + trilha +
-                ", dataCriacao=" + dataCriacao +
-                '}';
-    }
 }
