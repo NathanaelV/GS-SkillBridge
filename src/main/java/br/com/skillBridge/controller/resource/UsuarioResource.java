@@ -16,6 +16,7 @@ import java.util.ArrayList;
 @Path("/usuario")
 public class UsuarioResource {
     private UsuarioBO usuarioBO = new UsuarioBO();
+    TrilhaUsuarioBO trilhaUsuarioBO = new TrilhaUsuarioBO();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -88,7 +89,6 @@ public class UsuarioResource {
     @Path("/{codigo}/trilha_usuario")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAllTrilha(@PathParam("codigo") Long codigo) {
-        TrilhaUsuarioBO trilhaUsuarioBO = new TrilhaUsuarioBO();
         ArrayList<TrilhaUsuarioTO> resultado = trilhaUsuarioBO.findAll(codigo);
         Response.ResponseBuilder response;
 
@@ -124,7 +124,6 @@ public class UsuarioResource {
     @Path("{codigo}/trilha_usuario")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response save(@PathParam("codigo") Long codigo, TrilhaUsuarioTO trilhaUsuarioTO) {
-        TrilhaUsuarioBO trilhaUsuarioBO = new TrilhaUsuarioBO();
         TrilhaUsuarioTO resultado = trilhaUsuarioBO.save(codigo, trilhaUsuarioTO);
         Response.ResponseBuilder response;
 
@@ -137,4 +136,5 @@ public class UsuarioResource {
         response.entity(resultado);
         return response.build();
     }
+
 }

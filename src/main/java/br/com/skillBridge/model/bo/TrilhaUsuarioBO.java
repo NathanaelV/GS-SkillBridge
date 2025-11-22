@@ -17,4 +17,9 @@ public class TrilhaUsuarioBO {
         trilhaUsuarioDAO = new TrilhaUsuarioDAO();
         return trilhaUsuarioDAO.save(idUsuario, trilhaUsuarioTO);
     }
+
+    public boolean delete(Long idTrilhaUsuario) {
+        trilhaUsuarioDAO = new TrilhaUsuarioDAO();
+        return trilhaUsuarioDAO.delete(idTrilhaUsuario);
+    }
 }

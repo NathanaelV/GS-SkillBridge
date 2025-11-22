@@ -74,4 +74,19 @@ public class TrilhaUsuarioDAO {
 
         return trilhaUsuarioTO;
     }
+
+    public boolean delete(Long idTrilhaUsuario) {
+        String sql = "delete from t_skb_trilha_usuario where id_trilha_usuario=?";
+
+        try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
+            ps.setLong(1, idTrilhaUsuario);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir: " + e.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection();
+        }
+
+        return false;
+    }
 }
