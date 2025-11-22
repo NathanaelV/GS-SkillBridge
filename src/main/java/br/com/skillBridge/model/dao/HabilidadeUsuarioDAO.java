@@ -2,6 +2,7 @@ package br.com.skillBridge.model.dao;
 
 import br.com.skillBridge.model.dto.HabilidadeTO;
 import br.com.skillBridge.model.dto.HabilidadeUsuarioTO;
+import org.apache.camel.builder.endpoint.dsl.PulsarEndpointBuilderFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,4 +44,21 @@ public class HabilidadeUsuarioDAO {
 
         return habilidadesUsuario;
     }
+
+    public boolean delete(Long idHabilidadeUsuario) {
+        String sql = "delete from t_skb_usuario_habilidade where id_usuario_habilidade=?";
+
+        try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
+            ps.setLong(1, idHabilidadeUsuario);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir: " + e.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection();
+        }
+
+        return false;
+    }
+
+
 }
