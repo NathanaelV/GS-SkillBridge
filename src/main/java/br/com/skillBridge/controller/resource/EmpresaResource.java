@@ -2,7 +2,6 @@ package br.com.skillBridge.controller.resource;
 
 import br.com.skillBridge.model.bo.EmpresaBO;
 import br.com.skillBridge.model.dto.EmpresaTO;
-import br.com.skillBridge.model.dto.EmpresaTO;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;

@@ -86,10 +86,11 @@ public class UsuarioResource {
     }
 
     @GET
-    @Path("/{codigo}/trilha_usuario")
+    @Path("{codigo}/habilidade_usuario")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAllTrilha(@PathParam("codigo") Long codigo) {
-        ArrayList<TrilhaUsuarioTO> resultado = trilhaUsuarioBO.findAll(codigo);
+    public Response findAllHabilidade(@PathParam("codigo") Long codigo) {
+        HabilidadeUsuarioBO habilidadeUsuarioBO = new HabilidadeUsuarioBO();
+        ArrayList<HabilidadeUsuarioTO> resultado = habilidadeUsuarioBO.findAll(codigo);
         Response.ResponseBuilder response;
 
         if (resultado != null) {
@@ -103,11 +104,10 @@ public class UsuarioResource {
     }
 
     @GET
-    @Path("{codigo}/habilidade_usuario")
+    @Path("/{codigo}/trilha_usuario")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAllHabilidade(@PathParam("codigo") Long codigo) {
-        HabilidadeUsuarioBO habilidadeUsuarioBO = new HabilidadeUsuarioBO();
-        ArrayList<HabilidadeUsuarioTO> resultado = habilidadeUsuarioBO.findAll(codigo);
+    public Response findAllTrilha(@PathParam("codigo") Long codigo) {
+        ArrayList<TrilhaUsuarioTO> resultado = trilhaUsuarioBO.findAll(codigo);
         Response.ResponseBuilder response;
 
         if (resultado != null) {
@@ -130,11 +130,10 @@ public class UsuarioResource {
         if (resultado != null) {
             response = Response.ok();
         } else {
-            response = Response.status(404);
+            response = Response.status(400);
         }
 
         response.entity(resultado);
         return response.build();
     }
-
 }
