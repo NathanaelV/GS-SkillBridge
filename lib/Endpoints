@@ -5,7 +5,7 @@
 
 // GET: http://localhost:8080/usuario
 
-// Retorna:
+// Retorna: 200
 
 [
 	{
@@ -47,17 +47,21 @@
 	"idEmpresa": 2,
 	"habilidadesUsuario": [
 		{
-			"nivel": "iniciante",
-			"idHabilidade": 3
-		},
-		{
-			"nivel": "intermediario",
-			"idHabilidade": 2
-		}
+            "nivel": "iniciante",
+            "habilidade": {
+                "id": 3
+            }
+        },
+        {
+            "nivel": "intermediario",
+            "habilidade": {
+                "id": 2
+            }
+        }
 	]
 }
 
-// Retorna
+// Retorna: 201
 
 {
 	"id": 17,
@@ -70,30 +74,36 @@
 	"idEmpresa": 2,
 	"habilidadesUsuario": [
 		{
-			"id": 33,
-			"nivel": "iniciante",
-			"dataCriacao": "2025-11-20",
-			"idUsuario": 17,
-			"idHabilidade": 3
-		},
-		{
-			"id": 34,
-			"nivel": "intermediario",
-			"dataCriacao": "2025-11-20",
-			"idUsuario": 17,
-			"idHabilidade": 2
-		}
+            "id": 35,
+            "nivel": "iniciante",
+            "dataCriacao": "2025-11-21",
+            "habilidade": {
+                "id": 3,
+                "nome": null,
+                "categoria": null
+            }
+        },
+        {
+            "id": 36,
+            "nivel": "intermediario",
+            "dataCriacao": "2025-11-21",
+            "habilidade": {
+                "id": 2,
+                "nome": null,
+                "categoria": null
+            }
+        }
 	]
 }
 
 
 ------------------------------------------------------------
 
-// Retornar as informações de um usuário específico
+// Retornar as informações de um Usuário específico
 
 // GET: http://localhost:8080/usuario/:id
 
-// Retorna
+// Retorna: 200
 
 {
 	"codigo": 22,
@@ -108,9 +118,9 @@
 
 ------------------------------------------------------------
 
-// Atualizar as informações de um usuário
+// Atualizar as informações de um Usuário
 
-// PUT: http://localhost:8080/usuario/22
+// PUT: http://localhost:8080/usuario/:id
 
 // Body
 
@@ -123,7 +133,7 @@
 	"cpf": 5234567535
 }
 
-// Retorna
+// Retorna: 201
 
 {
 	"codigo": 22,
@@ -147,7 +157,7 @@
 
 // GET: http://localhost:8080/empresa
 
-// Retorna
+// Retorna: 200
 
 [
 	{
@@ -171,7 +181,7 @@
 
 // GET: http://localhost:8080/empresa/:id
 
-// Retorna
+// Retorna: 200
 
 {
 	"id": 6,
@@ -191,7 +201,7 @@
 
 // GET: http://localhost:8080/habilidade
 
-// Retorna
+// Retorna: 200
 
 [
 	{
@@ -211,13 +221,49 @@
 ========================================================================================================================
 
 
+// HABILIDADE USUARIO
+
+// Mostra todas as Habilidades de um Usuário
+
+// GET: http://localhost:8080/usuario/:id/habilidade_usuario
+
+// Retorna: 200
+
+[
+	{
+		"id": 10,
+		"nivel": "Especialista",
+		"dataCriacao": "2023-07-01",
+		"habilidade": {
+			"id": 10,
+			"nome": "Kage Bunshin no Jutsu",
+			"categoria": "Ninjutsu de Clones"
+		}
+	},
+	{
+		"id": 2,
+		"nivel": "Especialista",
+		"dataCriacao": "2023-05-15",
+		"habilidade": {
+			"id": 2,
+			"nome": "Rasengan",
+			"categoria": "Ninjutsu Avançado"
+		}
+	}
+]
+
+
+
+========================================================================================================================
+
+
 // TRILHA
 
 // Mostrar todas as listas do Banco de Dados
 
 // GET: http://localhost:8080/trilha
 
-// Retorna
+// Retorna: 200
 
 [
 	{
@@ -241,7 +287,7 @@
 
 // GET: http://localhost:8080/trilha/:id
 
-// Retorna
+// Retorna: 200
 
 {
 	"id": 5,
@@ -261,7 +307,7 @@
 
 // GET: http://localhost:8080/curso/:id
 
-// Retorna
+// Retorna: 200
 
 {
 	"id": 5,
@@ -280,9 +326,9 @@
 
 // Retorna as trilhas de um usuário específico
 
-// GET: http://localhost:8080/usuario/8/trilha_usuario
+// GET: http://localhost:8080/usuario/:id/trilha_usuario
 
-// Retorna
+// Retorna: 200
 
 [
 	{
@@ -312,6 +358,37 @@
 ]
 
 
+------------------------------------------------------------
+
+// Remove uma trilha do usuário
+
+// DELETE: http://localhost:8080/trilha_usuario/:id
+
+// Retorna: 204
+
+
+------------------------------------------------------------
+
+// Adiciona uma Trilha ao Usuário
+
+// POST: http://localhost:8080/usuario/:id/trilha_usuario
+
+// Retorna: 200
+
+{
+	"id": 26,
+	"progresso": 0,
+	"status": "Iniciado",
+	"trilha": {
+		"id": 2,
+		"nome": null,
+		"descricao": null,
+		"areaProfissional": null
+	},
+	"dataCriacao": "2025-11-21"
+}
+
+
 ========================================================================================================================
 
 
@@ -321,7 +398,7 @@
 
 // GET: http://localhost:8080/trilha/5/curso
 
-// Retorna
+// Retorna: 200
 
 [
 	{
