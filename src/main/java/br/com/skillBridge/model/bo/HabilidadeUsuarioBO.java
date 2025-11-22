@@ -13,7 +13,7 @@ public class HabilidadeUsuarioBO {
         return habilidadeUsuarioDAO.findAll(idUsuario);
     }
 
-    public boolean delete(long idHabilidadeUsuario) {
+    public boolean delete(Long idHabilidadeUsuario) {
         habilidadeUsuarioDAO = new HabilidadeUsuarioDAO();
         return habilidadeUsuarioDAO.delete(idHabilidadeUsuario);
     }

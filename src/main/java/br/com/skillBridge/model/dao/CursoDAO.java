@@ -5,11 +5,8 @@ import br.com.skillBridge.model.dto.CursoTO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class CursoDAO {
-    ArrayList<CursoTO> cursos = new ArrayList<CursoTO>();
-
     public CursoTO findByCode(Long codigo) {
         CursoTO curso = new CursoTO();
         String sql = "select * from t_skb_curso where id_curso=?";

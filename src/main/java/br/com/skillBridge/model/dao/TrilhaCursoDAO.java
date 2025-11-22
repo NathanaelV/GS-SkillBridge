@@ -40,5 +40,4 @@ public class TrilhaCursoDAO {
 
         return cursos;
     }
-
 }
