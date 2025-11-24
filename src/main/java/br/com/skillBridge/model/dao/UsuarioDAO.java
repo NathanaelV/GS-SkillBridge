@@ -4,10 +4,7 @@ import br.com.skillBridge.model.dto.HabilidadeUsuarioTO;
 import br.com.skillBridge.model.dto.UsuarioTO;
 import oracle.jdbc.proxy.annotation.Pre;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class UsuarioDAO {
@@ -83,40 +80,17 @@ public class UsuarioDAO {
             ps.setString(4, usuario.getSexo());
             ps.setDate(5, Date.valueOf(usuario.getDataNascimento()));
             ps.setLong(6, usuario.getCpf());
-            ps.setLong(7, usuario.getIdEmpresa());
+            if (usuario.getIdEmpresa() != null && usuario.getIdEmpresa() > 0) {
+                ps.setLong(7, usuario.getIdEmpresa());
+            } else {
+                ps.setNull(7, Types.NUMERIC);
+            }
 
             if (ps.executeUpdate() > 0) {
                 try (ResultSet rs = ps.getGeneratedKeys()) {
                     if (rs.next()) {
                         long codigoUsuario = rs.getLong(1);
                         usuario.setId(codigoUsuario);
-
-                        String sqlHabilidadeUsuario = "insert into T_SKB_USUARIO_HABILIDADE (nv_conhecimento, id_usuario, id_habilidade, dt_criacao)" +
-                                " values (?,?,?, sysdate)";
-                        String[] colunasRetorno = {"id_usuario_habilidade", "dt_criacao"};
-
-                        for (HabilidadeUsuarioTO habilidadeUsuario : usuario.getHabilidadesUsuario()) {
-
-                            try (PreparedStatement ps2 = ConnectionFactory.getConnection().prepareStatement(sqlHabilidadeUsuario, colunasRetorno)) {
-                                ps2.setString(1, habilidadeUsuario.getNivel());
-                                ps2.setLong(2, codigoUsuario);
-                                ps2.setLong(3, habilidadeUsuario.getHabilidade().getId());
-
-                                if (ps2.executeUpdate() <= 0){
-                                    return null;
-                                }
-
-                                try (ResultSet rs2 = ps2.getGeneratedKeys()) {
-                                    if (rs2.next()) {
-                                        habilidadeUsuario.setId(rs2.getLong(1));
-                                        habilidadeUsuario.setDataCriacao(rs2.getDate(2).toLocalDate());
-                                    }
-                                }
-
-                            } catch (SQLException e) {
-                                System.out.println("Erro ao salvar habilidade do usuario: " + e.getMessage());
-                            }
-                        }
                     }
                 }
 
